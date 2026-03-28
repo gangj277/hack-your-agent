@@ -1,0 +1,6 @@
+interface:
+  display_name: "HackYourAgent"
+  short_description: "Red-team AI agents for jailbreak and injection flaws"
+  default_prompt: "Use $hack-your-agent to red-team this authorized repo or staging agent for prompt injection, tool poisoning, memory poisoning, and concealment risks."
+policy:
+  allow_implicit_invocation: false
