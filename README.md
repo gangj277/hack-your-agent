@@ -60,7 +60,6 @@ Expected outcome:
 - A Codex wrapper in `platforms/codex/hack-your-agent/`
 - A Claude Code wrapper in `platforms/claude/hack-your-agent/`
 - Seeded vulnerable example targets in `examples/`
-- Launch assets in `launch/`
 
 ## Design Principles
 
@@ -145,17 +144,6 @@ HackYourAgent is supposed to behave like a forensic operator, not a prompt list.
 8. Produce findings, regressions, and a hardening plan only after the evidence is complete.
 
 If the target lacks a runnable harness, traces, or staging surface, the skill can still map architecture and design probes, but the forensic result will be correspondingly weaker.
-
-## Launch Assets
-
-Launch copy and outreach materials live in `launch/`:
-
-- `launch/positioning.md`
-- `launch/demo-script.md`
-- `launch/show-hn.md`
-- `launch/x-thread.md`
-- `launch/linkedin-post.md`
-- `launch/launch-checklist.md`
 
 ## Example Invocation
 
