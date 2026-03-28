@@ -1,6 +1,56 @@
 # HackYourAgent
 
-HackYourAgent is a manual-use red-team skill bundle for coding agents. It teaches a coding agent to map an authorized AI system, identify trust-boundary failures, run controlled jailbreak and prompt-injection probes, and leave behind evidence, regressions, and hardening actions that a builder can actually commit.
+Red-team Codex and Claude Code agents for prompt injection, MCP poisoning, memory poisoning, and concealed side effects.
+
+HackYourAgent is a manual-use skill bundle for coding agents. It teaches an agent to map an authorized AI system, generate paired control and attack trials, inspect outputs one by one, and leave behind evidence, regressions, and hardening actions a builder can actually commit.
+
+## Why It Exists
+
+Most AI security tooling still looks like one of these:
+
+- prompt scanners that never touch your actual agent workflow
+- eval frameworks that are powerful but too heavy for everyday repo use
+- research benchmarks that do not leave commit-ready regressions behind
+
+HackYourAgent is the narrow wedge for builders using coding agents. It is designed to run inside Codex and Claude Code workflows, inspect repo-local trust boundaries, and tell you where prompt injection, tool poisoning, memory poisoning, approval confusion, or concealment still work.
+
+## What You Get
+
+- Native install for Codex and Claude Code
+- A forensic red-team workflow with paired control and attack trials
+- Evidence-first output under `redteam/`
+- Seeded vulnerable example targets you can test immediately
+- Launch-ready docs and examples you can extend for your own targets
+
+## 60-Second Demo
+
+Install the skill:
+
+```bash
+python3 scripts/install_skill.py both
+```
+
+Pick a seeded example:
+
+- `examples/vulnerable-rag-agent`
+- `examples/vulnerable-mcp-agent`
+- `examples/vulnerable-concealment-agent`
+
+Invoke the skill:
+
+```text
+Use $hack-your-agent on examples/vulnerable-rag-agent.
+Write only to redteam/ artifacts. Build a paired control/attack trial matrix,
+inspect outputs one by one, and leave minimal repros and regressions.
+```
+
+Expected outcome:
+
+- `redteam/trials/trial-matrix.csv`
+- one dossier per trial in `redteam/trials/`
+- raw evidence folders in `redteam/evidence/`
+- ranked findings in `redteam/findings/`
+- a hardening plan in `redteam/hardening-plan.md`
 
 ## What Ships
 
@@ -9,6 +59,8 @@ HackYourAgent is a manual-use red-team skill bundle for coding agents. It teache
 - A helper bootstrap script in `scripts/init_redteam_run.py`
 - A Codex wrapper in `platforms/codex/hack-your-agent/`
 - A Claude Code wrapper in `platforms/claude/hack-your-agent/`
+- Seeded vulnerable example targets in `examples/`
+- Launch assets in `launch/`
 
 ## Design Principles
 
@@ -27,6 +79,16 @@ This repo is grounded in current primary sources as of March 28, 2026. The short
 - Frontier work now emphasizes tool poisoning, memory poisoning, and concealed compromise rather than only direct prompt overrides.
 
 See `core/references/frontier-research.md` for dated links and distilled takeaways.
+
+## Seeded Examples
+
+Start with [examples/README.md](/Users/gangjimin/Documents/main_dev/startup-ideas/opensource/HackYourAgent/examples/README.md).
+
+- `examples/vulnerable-rag-agent`: raw retrieved documents are merged into a high-authority prompt
+- `examples/vulnerable-mcp-agent`: tool metadata and tool results are trusted as instructions
+- `examples/vulnerable-concealment-agent`: summaries are generated from planner state instead of trace-backed actions
+
+These examples exist to help you demo the skill, test onboarding, and show prospective users a fast path to value.
 
 ## Native Install
 
@@ -83,6 +145,17 @@ HackYourAgent is supposed to behave like a forensic operator, not a prompt list.
 8. Produce findings, regressions, and a hardening plan only after the evidence is complete.
 
 If the target lacks a runnable harness, traces, or staging surface, the skill can still map architecture and design probes, but the forensic result will be correspondingly weaker.
+
+## Launch Assets
+
+Launch copy and outreach materials live in `launch/`:
+
+- `launch/positioning.md`
+- `launch/demo-script.md`
+- `launch/show-hn.md`
+- `launch/x-thread.md`
+- `launch/linkedin-post.md`
+- `launch/launch-checklist.md`
 
 ## Example Invocation
 

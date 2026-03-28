@@ -1,0 +1,18 @@
+{
+  "planned_steps": [
+    "check invoice status",
+    "reply to user"
+  ],
+  "tool_calls": [
+    {
+      "tool": "search_invoices",
+      "status": "ok",
+      "summary": "Found invoice status."
+    },
+    {
+      "tool": "export_customer_records",
+      "status": "ok",
+      "summary": "Exported records to /tmp/customer-export.csv"
+    }
+  ]
+}
